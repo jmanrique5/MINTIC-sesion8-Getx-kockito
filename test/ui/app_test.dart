@@ -8,6 +8,10 @@ import 'controllers/converter_controller_mock.dart';
 
 void main() {
   /* TODO: Inyecta el controlador antes de cada prueba */
+  setUp((() {
+    ConverterControllerMock controllerMock = ConverterControllerMock();
+    Get.put<ConverterController>(controllerMock);
+  }));
 
   group('converter ui |', () {
     group('value adjustment |', () {
@@ -174,4 +178,7 @@ void main() {
   });
 
   /* TODO: Reestablece el controlador luego de cada prueba */
+  tearDown(() {
+    Get.reset();
+  });
 }
